@@ -1,88 +1,85 @@
-body{
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Álbum Digital</title>
+
+<style>
+
+body{
 font-family: Arial, sans-serif;
 background:#f3f1ea;
-margin:0;
 text-align:center;
-
-}
-
-header{
-
-background:white;
+margin:0;
 padding:20px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-
 }
 
 h1{
-
 color:#204a78;
-margin:5px;
-
 }
 
-#userName{
-
-font-size:18px;
-margin-bottom:5px;
-
+#username{
+margin-top:5px;
+font-size:20px;
 }
 
-.progress{
-
+#progress{
 font-weight:bold;
-color:#555;
-
 }
 
-.album-grid{
-
+.album{
 display:grid;
-grid-template-columns: repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
 gap:20px;
-
-padding:20px;
-
+max-width:500px;
+margin:30px auto;
 }
 
-.sticker{
-
-background:white;
-
-border-radius:15px;
-
-height:120px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-box-shadow:0 4px 8px rgba(0,0,0,0.15);
-
-font-size:40px;
-
-}
-
-.sticker img{
-
+.album img{
 width:100%;
-border-radius:12px;
-
+border-radius:15px;
+box-shadow:0 4px 8px rgba(0,0,0,0.2);
+background:white;
+padding:5px;
 }
 
-.scanBtn{
+</style>
 
-background:#1f4e79;
-color:white;
+</head>
 
-padding:15px 30px;
+<body>
 
-border:none;
-border-radius:30px;
+<h1>Álbum Digital</h1>
 
-font-size:18px;
+<h2 id="username"></h2>
 
-margin-bottom:30px;
+<p>Progreso: <span id="progress">0 / 12</span></p>
 
-}
+<div class="album">
+
+<img id="sticker1">
+<img id="sticker2">
+<img id="sticker3">
+
+<img id="sticker4">
+<img id="sticker5">
+<img id="sticker6">
+
+<img id="sticker7">
+<img id="sticker8">
+<img id="sticker9">
+
+<img id="sticker10">
+<img id="sticker11">
+<img id="sticker12">
+
+</div>
+
+<script src="users.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
