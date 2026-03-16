@@ -1,51 +1,33 @@
-const params = new URLSearchParams(window.location.search)
+const params = new URLSearchParams(window.location.search);
 
-const user = params.get("user")
-const sticker = params.get("sticker")
+const user = params.get("user");
+const sticker = params.get("sticker");
 
-if(!user || !USERS[user]){
+if (!user || !USERS[user]) {
+    document.body.innerHTML = "<h2>Usuario no válido</h2>";
+    throw new Error("Usuario inválido");
+}
 
-alert("Usuario no válido")
+document.getElementById("username").textContent = USERS[user];
+
+let album = JSON.parse(localStorage.getItem("album_" + user)) || [];
+
+if (sticker && !album.includes(sticker)) {
+    album.push(sticker);
+    localStorage.setItem("album_" + user, JSON.stringify(album));
+    alert("🎉 Nuevo sticker agregado!");
+}
+
+for (let i = 1; i <= 12; i++) {
+
+    const img = document.getElementById("sticker" + i);
+
+    if (album.includes(i.toString())) {
+        img.src = "stickers/" + i + ".png";
+    } else {
+        img.src = "imagenes/locked.png";
+    }
 
 }
 
-document.getElementById("userName").innerText = USERS[user]
-
-const storageKey = "album_"+user
-
-let album = JSON.parse(localStorage.getItem(storageKey)) || []
-
-if(sticker){
-
-if(!album.includes(sticker)){
-
-album.push(sticker)
-
-localStorage.setItem(storageKey,JSON.stringify(album))
-
-alert("🎉 Nuevo sticker desbloqueado!")
-
-}
-
-}
-
-const stickers = document.querySelectorAll(".sticker")
-
-stickers.forEach(box=>{
-
-let id = box.dataset.id
-
-if(album.includes(id)){
-
-box.innerHTML = `<img src="stickers/${id}.png">`
-
-}else{
-
-box.innerHTML = "❓"
-
-}
-
-})
-
-document.getElementById("progressText").innerText =
-album.length + " / 12"
+document.getElementById("progress").textContent = album.length + " / 12";
